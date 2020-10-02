@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.projects)
+    //console.log(this.projects)
   }
 
 }

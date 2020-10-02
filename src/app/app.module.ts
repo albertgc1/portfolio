@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProjectFormComponent } from './home/components/project-form/project-form.component';
 import { FormsModule } from '@angular/forms';
+import { ProjectDetailComponent } from './home/components/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ProjectComponent,
     AboutComponent,
     ContactComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

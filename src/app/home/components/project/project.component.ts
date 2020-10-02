@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Project } from 'src/app/core/models/Project';
 
 @Component({
   selector: 'app-project',
@@ -8,9 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProjectComponent implements OnInit {
 
   @Input() project
-  constructor() { }
+
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
+    this.project = new Project(this.project.title, this.project.description)
   }
 
 }

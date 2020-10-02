@@ -1,0 +1,9 @@
+.vertical{
+    width: 100%;
+    height: auto;
+}
+
+.horizontal{
+    width: 90%;
+    margin-left: 5%;
+}

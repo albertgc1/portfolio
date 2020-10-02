@@ -1,12 +1,10 @@
 export class Project {
 
-    id: Number
     title: String
     description: String
     tools: tools[]
 
-    constructor(id: Number, title: String, description: String){
-        this.id = id
+    constructor(title: String, description: String){
         this.title = title
         this.description = description
         this.tools = []
@@ -14,6 +12,10 @@ export class Project {
 
     addTools(tool){
         this.tools.push(tool)
+    }
+
+    getUrl(){
+        return this.title.toLocaleLowerCase().replaceAll(' ', '-')
     }
 
 }

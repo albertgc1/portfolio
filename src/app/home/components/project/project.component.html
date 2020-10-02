@@ -1,4 +1,4 @@
-<div class="card shadow mb-4">
+<div *ngIf="project" class="card shadow mb-4">
   <img src="../../../../assets/computers.jpg" class="card-img-top" alt="project">
   <div class="card-body">
     <h5 class="card-title">{{ project.title }}</h5>
@@ -11,7 +11,7 @@
           src="{{ '../../../../assets/icons/' + icon + '.svg' }}"
           alt="{{ icon }}">
       </div>
-      <a href="#" class="btn btn-info shadow btn-sm">Detalles</a>
+      <a [routerLink]="['/', project.getUrl()]" class="btn btn-info shadow btn-sm">Detalles</a>
     </div>
   </div>
 </div>
