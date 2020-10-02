@@ -8,6 +8,8 @@ import { NavComponent } from './shared/nav/nav.component';
 import { ProjectComponent } from './home/components/project/project.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProjectFormComponent } from './home/components/project-form/project-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { ContactComponent } from './contact/contact.component';
     NavComponent,
     ProjectComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
