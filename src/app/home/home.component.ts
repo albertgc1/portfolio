@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../core/models/Project'
+import { projects } from './data'
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,14 @@ import { Project } from '../core/models/Project'
 })
 export class HomeComponent implements OnInit {
 
-  project = new Project(1, '', '')
+  projects
 
   constructor() {
-    
+    this.projects = projects
   }
 
   ngOnInit(): void {
-    console.log(this.project)
+    console.log(this.projects)
   }
 
 }

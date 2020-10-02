@@ -1,12 +1,15 @@
 <div class="card shadow mb-4">
   <img src="../../../../assets/computers.jpg" class="card-img-top" alt="project">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">{{ project.title }}</h5>
+    <p class="card-text">{{ project.description }}</p>
     <div class="d-flex justify-content-between">
       <div class="d-flex align-items-center">
-        <img class="icon mr-1" src="../../../../assets/icons/angular-brands.svg" alt="">
-        <i class="fa fa-users"></i>
+        <img
+          class="icon mr-1"
+          *ngFor="let icon of project.tools"
+          src="{{ '../../../../assets/icons/' + icon + '.svg' }}"
+          alt="{{ icon }}">
       </div>
       <a href="#" class="btn btn-info shadow btn-sm">Detalles</a>
     </div>

@@ -1,31 +1,63 @@
 <h3>Register a new Porject</h3>
 <hr>
 
-<div class="col-12 col-md-6 m-auto">
-    <form (ngSubmit)="savePorject()">
-        <div class="form-group row">
-            <label class="col-md-2 col-form-label" for="title">Title</label>
-            <div class="col-md-10">
-                <input 
-                    type="text" id="title" name="title" [(ngModel)]="project.title" class="form-control" required>
+<form (ngSubmit)="savePorject()">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="title">Title</label>
+                <div class="col-md-10">
+                    <input 
+                        type="text" id="title" name="title" [(ngModel)]="project.title" class="form-control" required>
+                </div>
             </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="description">Description</label>
+                <div class="col-md-10">
+                    <textarea type="text" id="description" name="description" [(ngModel)]="project.description" class="form-control" required></textarea>
+                </div>
+            </div>
+
+            <div *ngIf="project.tools" class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10 d-flex align-items-center">
+                    <img
+                        class="icon ml-2"
+                        *ngFor="let icon of project.tools"
+                        src="{{ '../../../../assets/icons/' + icon + '.svg' }}"
+                        alt="{{ icon }}">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="tool">Tools</label>
+                <div class="col-md-6 mr-0">
+                    <input type="text" id="tool" name="tool" [(ngModel)]="tool" class="form-control" required>
+                </div>
+                <div class="col-md-2 ml-0">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        (click)="project.addTools(tool); tool=''"
+                    >Add</button>
+                </div>
+            </div>
+            
         </div>
 
-        <div class="form-group row">
-            <label class="col-md-2 col-form-label" for="description">Description</label>
-            <div class="col-md-10">
-                <textarea type="text" id="description" name="description" [(ngModel)]="project.description" class="form-control" required></textarea>
+        <div class="col-md-6">
+            <div class="photo border d-flex flex-column align-items-center justify-content-around">
+                <label>Selecciona una portada del proyecto</label>
+                <input type="file">
             </div>
         </div>
+        
+    </div>
 
-        <div class="form-group row">
-            <label class="col-md-2 col-form-label" for="tools">Tools</label>
-            <div class="col-md-10">
-                <input type="text" id="tools" name="tools" [(ngModel)]="project.tools" class="form-control" required>
-            </div>
-        </div>
+    <div class="col-12 col-md-12 text-center mt-4">
+        <button type="submit" class="btn btn-info register">Register</button>
+    </div>
 
-        <button type="submit" class="btn btn-info float-right">Register</button>
-    </form>
-
-</div>
+</form>

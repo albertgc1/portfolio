@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/core/models/Project';
+import { Project, tools } from 'src/app/core/models/Project';
 
 @Component({
   selector: 'app-project-form',
@@ -9,10 +9,13 @@ import { Project } from 'src/app/core/models/Project';
 export class ProjectFormComponent implements OnInit {
 
   project = new Project(1, '', '')
+  tools = tools
+  tool: String
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(tools)
   }
 
   savePorject(){

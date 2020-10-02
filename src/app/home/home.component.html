@@ -5,8 +5,9 @@
 <hr>
 
 <div class="row">
-    <app-project class="col-12 col-md-3"></app-project>
-    <app-project class="col-12 col-md-3"></app-project>
-    <app-project class="col-12 col-md-3"></app-project>
-    <app-project class="col-12 col-md-3"></app-project>
+    <app-project 
+        class="col-12 col-md-3"
+        *ngFor="let project of projects"
+        [project]="project"
+    ></app-project>
 </div>

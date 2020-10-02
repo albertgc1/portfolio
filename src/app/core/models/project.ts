@@ -1,11 +1,9 @@
-import Tool from "./tool"
-
 export class Project {
 
     id: Number
     title: String
     description: String
-    tools: Tool[]
+    tools: tools[]
 
     constructor(id: Number, title: String, description: String){
         this.id = id
@@ -14,8 +12,22 @@ export class Project {
         this.tools = []
     }
 
-    addTools(tool: Tool){
+    addTools(tool){
         this.tools.push(tool)
     }
 
+}
+
+export enum tools {
+    angular = 'Angular',
+    bootstrap = 'Bootstrap',
+    css = 'Bss',
+    html5 = 'Html5',
+    java = 'Java',
+    js = 'Js',
+    laravel = 'Laravel',
+    node = 'Node',
+    php = 'Php',
+    react = 'React',
+    vue = 'Vue',
 }
