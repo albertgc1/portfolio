@@ -8,7 +8,7 @@ import { Project, tools } from 'src/app/core/models/Project';
 })
 export class ProjectFormComponent implements OnInit {
 
-  project = new Project(1, '', '')
+  project = new Project('', '')
   tools = tools
   tool: String
 
@@ -19,8 +19,9 @@ export class ProjectFormComponent implements OnInit {
   }
 
   savePorject(){
+    this.project.id = this.project.getUrl()
     console.log(this.project)
-    this.project = new Project(1, '', '')
+    this.project = new Project('', '')
   }
 
 }

@@ -1,21 +1,16 @@
-export class Project {
+import { ProjectDetail } from './proyect-detail'
 
-    title: String
-    description: String
-    tools: tools[]
+export class Project extends ProjectDetail {
 
-    constructor(title: String, description: String){
-        this.title = title
-        this.description = description
-        this.tools = []
+    tools: Array<tools>
+
+    constructor(title: String, description: String, photo: String= '', vertical: Boolean= false, tools: Array<tools> = []){
+        super(title, description, photo, vertical)
+        this.tools = tools
     }
 
     addTools(tool){
         this.tools.push(tool)
-    }
-
-    getUrl(){
-        return this.title.toLocaleLowerCase().replaceAll(' ', '-')
     }
 
 }
