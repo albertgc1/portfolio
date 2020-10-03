@@ -55,9 +55,12 @@
         </div>
 
         <div class="col-md-6">
-            <div class="photo border d-flex flex-column align-items-center justify-content-around">
+            <div *ngIf="!photo" class="photo border d-flex flex-column align-items-center justify-content-around">
                 <label>Selecciona una portada del proyecto</label>
-                <input type="file">
+                <input type="file" name="photo" (change)="uploadPhoto($event)">
+            </div>
+            <div *ngIf="photo" class="border text-center p-1">
+                <img class="shadow" src="{{ photo }}" alt="">
             </div>
         </div>
         

@@ -12,6 +12,10 @@ import { ProjectFormComponent } from './home/components/project-form/project-for
 import { FormsModule } from '@angular/forms';
 import { ProjectDetailComponent } from './home/components/project-detail/project-detail.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,9 @@ import { ProjectDetailComponent } from './home/components/project-detail/project
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
