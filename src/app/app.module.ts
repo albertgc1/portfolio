@@ -15,6 +15,7 @@ import { ProjectDetailComponent } from './home/components/project-detail/project
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
+import { ExcerptPipe } from './shared/pipes/excerpt.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { environment } from 'src/environments/environment';
     AboutComponent,
     ContactComponent,
     ProjectFormComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    ExcerptPipe
   ],
   imports: [
     BrowserModule,
