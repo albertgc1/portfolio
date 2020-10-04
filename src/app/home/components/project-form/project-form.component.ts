@@ -22,6 +22,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(){
@@ -32,19 +33,31 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
-  savePorject(){
+  async savePorject(){
     this.project.id = this.project.getUrl()
     this.project.photo = this.photo
+    this.project.vertical = await this.checkImageOrientation()
     this.projectService.store({ ...this.project })
     this.project = new Project('', '')
   }
 
-  saveProjectScreen(){
+  async saveProjectScreen(){
     delete this.project.tools
     this.project.id = this.project.getUrl()
-    console.log(this.project)
+    this.project.vertical = await this.checkImageOrientation()
     this.projectService.storeScreen(this.projectId, { ...this.project })
     this.project = new Project('', '')
+  }
+
+  checkImageOrientation(){
+    let photo = document.getElementById('image')
+    let h = photo.clientHeight
+    let w = photo.clientWidth
+    if(h > w){
+      return true
+    }else{
+      return false
+    }
   }
 
   uploadPhoto(e){
@@ -61,7 +74,7 @@ export class ProjectFormComponent implements OnInit {
     task.then(
       res => res.ref.getDownloadURL()
         .then(url => this.photo = url)
-    )     
+    )
   }
 
 }

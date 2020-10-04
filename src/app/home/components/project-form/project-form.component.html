@@ -53,7 +53,7 @@
                 <input type="file" name="photo" (change)="uploadPhoto($event)">
             </div>
             <div *ngIf="photo" class="border text-center p-1">
-                <img class="shadow" src="{{ photo }}" alt="">
+                <img class="shadow" src="{{ photo }}" alt="{{ project.title }}" id="image">
             </div>
         </div>
         
