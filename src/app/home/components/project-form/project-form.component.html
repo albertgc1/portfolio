@@ -1,7 +1,7 @@
-<h3>Register a new Porject</h3>
+<h3>{{ projectId ? 'Register a new Screen' : 'Register a new Porject' }}</h3>
 <hr>
 
-<form (ngSubmit)="savePorject()">
+<form (ngSubmit)="onSubmit()">
     <div class="row">
 
         <div class="col-md-6">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div *ngIf="!projectId" class="form-group row">
                 <label class="col-md-2 col-form-label" for="tool">Tools</label>
                 <div class="col-md-6 mr-0">
                     <input type="text" id="tool" name="tool" [(ngModel)]="tool" class="form-control" required>
@@ -44,13 +44,6 @@
                     >Add</button>
                 </div>
             </div>
-
-            <!-- <div class="radios">
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" value="true" [(ngModel)]="project.vertical">
-                    <label class="custom-control-label" for="customSwitch1">Toggle this switch elemen t</label>
-                </div>
-            </div> -->
             
         </div>
 

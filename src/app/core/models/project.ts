@@ -1,6 +1,6 @@
-import { ProjectDetail } from './proyect-detail'
+import { ProjectScreen } from './proyect-screen'
 
-export class Project extends ProjectDetail {
+export class Project extends ProjectScreen {
 
     tools: Array<tools>
 
@@ -26,5 +26,5 @@ export enum tools {
     node = 'Node',
     php = 'Php',
     react = 'React',
-    vue = 'Vue',
+    vue = 'Vue'
 }

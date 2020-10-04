@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project, tools } from 'src/app/core/models/Project';
 import { ProjectService } from 'src/app/core/services/project.service'
 import { AngularFireStorage } from '@angular/fire/storage';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -14,17 +15,35 @@ export class ProjectFormComponent implements OnInit {
   tools = tools
   tool: String
   photo: String = ''
+  projectId: String
 
-  constructor(private projectService: ProjectService, private angStorage: AngularFireStorage) { }
+  constructor(private projectService: ProjectService, private angStorage: AngularFireStorage, private route: ActivatedRoute) {
+    this.projectId = this.route.snapshot.params.project
+  }
 
   ngOnInit(): void {
-    //console.log(tools)
+  }
+
+  onSubmit(){
+    if(this.projectId){
+      this.saveProjectScreen()
+    }else{
+      this.savePorject()
+    }
   }
 
   savePorject(){
     this.project.id = this.project.getUrl()
     this.project.photo = this.photo
     this.projectService.store({ ...this.project })
+    this.project = new Project('', '')
+  }
+
+  saveProjectScreen(){
+    delete this.project.tools
+    this.project.id = this.project.getUrl()
+    console.log(this.project)
+    this.projectService.storeScreen(this.projectId, { ...this.project })
     this.project = new Project('', '')
   }
 

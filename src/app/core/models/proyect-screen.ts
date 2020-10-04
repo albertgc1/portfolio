@@ -1,4 +1,4 @@
-export class ProjectDetail {
+export class ProjectScreen {
 
     id: String
     title: String

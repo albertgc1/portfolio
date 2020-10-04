@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from 'src/app/core/models/Project';
-import { projects } from '../../data';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 
 @Component({
@@ -11,21 +10,36 @@ import { projects } from '../../data';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  title
+  id
   project
-  projects = projects
-  constructor(private route: ActivatedRoute) {
-    this.title = this.getTitleFromUrl(this.route.snapshot.params.project)
-    this.project = new Project('Social network with laravel and react', 'asd')
+  currentProject
+  screens = []
+  constructor(private route: ActivatedRoute, private projectService: ProjectService) {
+    this.id = this.route.snapshot.params.project
   }
 
   ngOnInit(): void {
-
+    this.projectService.show(this.id).subscribe(
+      project => {
+        this.currentProject = project
+        this.project = project
+        this.getScreens(this.id)
+      }
+    )
   }
 
-  getTitleFromUrl(url){
-      let title = url.charAt(0).toUpperCase() + url.slice(1);
-      return title.replace('-', ' ')
+  home(){
+    this.project = this.currentProject
+  }
+
+  show(project){
+    this.project = project
+  }
+
+  getScreens(id){
+    this.projectService.indexScreens(id).subscribe(
+      res => this.screens = res
+    )
   }
 
 }

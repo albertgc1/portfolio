@@ -7,3 +7,11 @@
     width: 90%;
     margin-left: 5%;
 }
+
+.active{
+    color: blue;
+}
+
+li{
+    cursor: pointer;
+}
