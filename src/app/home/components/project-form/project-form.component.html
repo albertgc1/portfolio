@@ -44,6 +44,14 @@
                     >Add</button>
                 </div>
             </div>
+
+            <div *ngIf="!projectId" class="form-group row">
+                <label class="col-md-2 col-form-label" for="github">Github url</label>
+                <div class="col-md-10">
+                    <input 
+                        type="text" id="github" name="github" [(ngModel)]="project.github" class="form-control" required>
+                </div>
+            </div>
             
         </div>
 

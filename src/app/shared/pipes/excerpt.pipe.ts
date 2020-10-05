@@ -12,7 +12,7 @@ export class ExcerptPipe implements PipeTransform {
     let size = body.length
 
     if(size > 100) {
-      body = body.slice(0, 150)
+      body = body.slice(0, 120)
       body += '...'
     }
 

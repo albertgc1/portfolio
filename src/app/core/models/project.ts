@@ -3,10 +3,12 @@ import { ProjectScreen } from './proyect-screen'
 export class Project extends ProjectScreen {
 
     tools: Array<tools>
+    github: String
 
-    constructor(title: String, description: String, photo: String= '', vertical: Boolean= false, tools: Array<tools> = []){
+    constructor(title: String, description: String, photo: String= '', vertical: Boolean= false, tools: Array<tools> = [], github: String= ''){
         super(title, description, photo, vertical)
         this.tools = tools
+        this.github = github
     }
 
     addTools(tool){
