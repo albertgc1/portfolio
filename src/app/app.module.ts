@@ -14,8 +14,12 @@ import { ProjectDetailComponent } from './home/components/project-detail/project
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { environment } from 'src/environments/environment';
 import { ExcerptPipe } from './shared/pipes/excerpt.pipe';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,17 @@ import { ExcerptPipe } from './shared/pipes/excerpt.pipe';
     ContactComponent,
     ProjectFormComponent,
     ProjectDetailComponent,
-    ExcerptPipe
+    ExcerptPipe,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

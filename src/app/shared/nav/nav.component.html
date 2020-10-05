@@ -16,6 +16,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="contact" routerLinkActive="active">Contact</a>
           </li>
+          <li *ngIf="auth" class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
+          </li>
         </ul>
       </div>
     </div>

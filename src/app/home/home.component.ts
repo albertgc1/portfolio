@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
 import { ProjectService } from '../core/services/project.service';
-//import { projects } from './data'
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,9 @@ import { ProjectService } from '../core/services/project.service';
 export class HomeComponent implements OnInit {
 
   projects
+  auth: boolean = false
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private authService: AuthService) {
 
   }
 
@@ -19,7 +20,12 @@ export class HomeComponent implements OnInit {
     this.projectService.index().subscribe(
       res => this.projects = res
     )
-    //console.log(this.projects)
+    this.authService.authenticated().subscribe(
+      res => {
+        if(res) this.auth = true
+        else this.auth = false
+      }
+    )
   }
 
 }
