@@ -63,7 +63,7 @@ export class ProjectFormComponent implements OnInit {
   uploadPhoto(e){
     const file = e.target.files[0]
 
-    let task = this.angStorage.ref(`projects/${file.name}`).put(file)
+    let task = this.angStorage.ref(`projects/${Date.now()}`).put(file)
 
     task.snapshotChanges().subscribe(
       res => {

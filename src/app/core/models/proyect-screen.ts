@@ -5,6 +5,7 @@ export class ProjectScreen {
     description: String
     photo: String
     vertical: Boolean
+    createdAt: Number
 
     constructor(title: String, description: String, photo: String, vertical: Boolean){
         this.title = title
@@ -12,10 +13,11 @@ export class ProjectScreen {
         this.photo = photo
         this.vertical = vertical
         this.id = this.getUrl()
+        this.createdAt = Date.now()
     }
 
     getUrl(){
-        return this.title.toLocaleLowerCase().replaceAll(' ', '-')
+        return this.title.toLocaleLowerCase().split(' ').join('-')
     }
 
 }

@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     this.projectService.index().subscribe(
       res => this.projects = res
     )
+    
     this.authService.authenticated().subscribe(
       res => {
         if(res) this.auth = true

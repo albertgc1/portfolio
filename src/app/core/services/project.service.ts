@@ -10,7 +10,7 @@ export class ProjectService {
   constructor(private angFire: AngularFirestore) { }
 
   index(){
-    return this.angFire.collection('projects').valueChanges()
+    return this.angFire.collection('projects', ref => (ref.orderBy('createdAt', 'desc'))).valueChanges()
   }
 
   show(id){
@@ -26,7 +26,7 @@ export class ProjectService {
   }
 
   indexScreens(projectId){
-    return this.angFire.collection(`projects/${projectId}/screens`).valueChanges()
+    return this.angFire.collection(`projects/${projectId}/screens`, ref => (ref.orderBy('createdAt', 'desc'))).valueChanges()
   }
 
 }
