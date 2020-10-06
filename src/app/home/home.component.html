@@ -4,6 +4,14 @@
 </div>
 <hr>
 
+<div *ngIf="!projects" class="progress">
+    <div
+        class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" 
+        style="width: 100%">
+    </div>
+</div>
+
 <div class="row">
     <app-project 
         class="col-12 col-md-4"

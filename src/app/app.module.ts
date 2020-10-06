@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 import { ExcerptPipe } from './shared/pipes/excerpt.pipe';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegisterComponent } from './auth/register/register.component';
     ProjectDetailComponent,
     ExcerptPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
