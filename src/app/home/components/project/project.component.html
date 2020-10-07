@@ -2,7 +2,7 @@
   <img class="card-img-top shadow-sm img-fluid" src="{{ project.photo }}" alt="{{ project.title }}">
   <div class="card-body">
     <h5 class="card-title">{{ project.title }}</h5>
-    <p class="card-text">{{ project.description | excerpt }}</p>
+    <p class="card-text" [innerHTML]="project.description | excerpt"></p>
     <div class="d-flex justify-content-between">
       <div class="d-flex align-items-center">
         <img
