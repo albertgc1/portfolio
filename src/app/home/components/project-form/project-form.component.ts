@@ -44,6 +44,7 @@ export class ProjectFormComponent implements OnInit {
   async saveProjectScreen(){
     delete this.project.tools
     this.project.id = this.project.getUrl()
+    this.project.photo = this.photo
     this.project.vertical = await this.checkImageOrientation()
     this.projectService.storeScreen(this.projectId, { ...this.project })
     this.project = new Project('', '')
