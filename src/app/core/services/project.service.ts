@@ -14,7 +14,7 @@ export class ProjectService {
   }
 
   show(id){
-    return this.angFire.collection('projects').doc(id).valueChanges()
+    return this.angFire.collection('projects', ref => (ref.orderBy('createdAt', 'asc'))).doc(id).valueChanges()
   }
 
   store(project){

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project, tools } from 'src/app/core/models/Project';
 import { ProjectService } from 'src/app/core/services/project.service'
 import { AngularFireStorage } from '@angular/fire/storage';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -16,8 +16,11 @@ export class ProjectFormComponent implements OnInit {
   tool: String
   photo: String = ''
   projectId: String
+  files: File[] = [];
+  types = ["desk", "mobile"]
 
-  constructor(private projectService: ProjectService, private angStorage: AngularFireStorage, private route: ActivatedRoute) {
+  constructor(private projectService: ProjectService, private angStorage: AngularFireStorage, private route: ActivatedRoute,
+    private router: Router) {
     this.projectId = this.route.snapshot.params.project
   }
 
@@ -33,36 +36,26 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
-  async savePorject(){
+  savePorject(){
+    delete this.project.photos
     this.project.id = this.project.getUrl()
     this.project.photo = this.photo
-    this.project.vertical = await this.checkImageOrientation()
     this.projectService.store({ ...this.project })
     this.project = new Project('', '')
+    this.router.navigate(['/'])
   }
 
-  async saveProjectScreen(){
+  saveProjectScreen(){
     delete this.project.tools
+    delete this.project.photo
+    delete this.project.type
     this.project.id = this.project.getUrl()
-    this.project.photo = this.photo
-    this.project.vertical = await this.checkImageOrientation()
     this.projectService.storeScreen(this.projectId, { ...this.project })
     this.project = new Project('', '')
+    this.router.navigate(['detail', this.projectId])
   }
 
-  checkImageOrientation(){
-    let photo = document.getElementById('image')
-    let h = photo.clientHeight
-    let w = photo.clientWidth
-    if(h > w){
-      return true
-    }else{
-      return false
-    }
-  }
-
-  uploadPhoto(e){
-    const file = e.target.files[0]
+  uploadPhoto(file){
 
     let task = this.angStorage.ref(`projects/${Date.now()}`).put(file)
 
@@ -74,8 +67,24 @@ export class ProjectFormComponent implements OnInit {
 
     task.then(
       res => res.ref.getDownloadURL()
-        .then(url => this.photo = url)
+        .then(url => {    
+          if(this.projectId){
+            this.project.photos.push(url)
+            console.log(this.project)
+          }else{
+            this.photo = url
+          }
+        })
     )
+  }
+
+  onSelect(event) {
+    this.files.push(...event.addedFiles)
+    this.uploadPhoto(event.addedFiles[0])
+  }
+  
+  onRemove(event) {
+    this.files.splice(this.files.indexOf(event), 1)
   }
 
 }

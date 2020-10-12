@@ -42,6 +42,7 @@ export class ProjectDetailComponent implements OnInit {
 
   show(project){
     this.project = project
+    console.log(this.project)
   }
 
   getScreens(id){

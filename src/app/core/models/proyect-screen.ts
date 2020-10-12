@@ -4,16 +4,16 @@ export class ProjectScreen {
     title: String
     description: String
     photo: String
-    vertical: Boolean
     createdAt: Number
+    photos: Array<String>
 
-    constructor(title: String, description: String, photo: String, vertical: Boolean){
+    constructor(title: String, description: String, photo: String, photos: Array<String>){
         this.title = title
         this.description = description
         this.photo = photo
-        this.vertical = vertical
-        this.id = this.getUrl()
         this.createdAt = Date.now()
+        this.photos = photos
+        this.id = this.getUrl()
     }
 
     getUrl(){

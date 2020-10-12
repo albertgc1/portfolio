@@ -4,11 +4,14 @@ export class Project extends ProjectScreen {
 
     tools: Array<tools>
     github: String
+    type: String
 
-    constructor(title: String, description: String, photo: String= '', vertical: Boolean= false, tools: Array<tools> = [], github: String= ''){
-        super(title, description, photo, vertical)
+    constructor(title: String, description: String, photo: String= '', 
+                tools: Array<tools> = [], type: String = 'desk', github: String= '', photos: Array<String> = []){
+        super(title, description, photo, photos)
         this.tools = tools
         this.github = github
+        this.type = type
     }
 
     addTools(tool){

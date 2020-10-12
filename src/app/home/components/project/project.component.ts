@@ -15,7 +15,7 @@ export class ProjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.project = new Project(this.project.title, this.project.description, this.project.photo, false, this.project.tools)
+    this.project = new Project(this.project.title, this.project.description, this.project.photo, this.project.tools)
     //console.log(this.project)
   }
 

@@ -22,6 +22,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ImgCaruselComponent } from './shared/img-carusel/img-carusel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     ExcerptPipe,
     LoginComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    ImgCaruselComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
