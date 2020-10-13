@@ -3,6 +3,7 @@ import { Project, tools } from 'src/app/core/models/Project';
 import { ProjectService } from 'src/app/core/services/project.service'
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectScreen } from 'src/app/core/models/proyect-screen';
 
 @Component({
   selector: 'app-project-form',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjectFormComponent implements OnInit {
 
-  project = new Project('', '')
+  project
   tools = tools
   tool: String
   photo: String = ''
@@ -25,7 +26,8 @@ export class ProjectFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if(this.projectId) this.project = new ProjectScreen()
+    else this.project = new Project()
   }
 
   onSubmit(){
@@ -41,17 +43,14 @@ export class ProjectFormComponent implements OnInit {
     this.project.id = this.project.getUrl()
     this.project.photo = this.photo
     this.projectService.store({ ...this.project })
-    this.project = new Project('', '')
+    this.project = new Project()
     this.router.navigate(['/'])
   }
 
   saveProjectScreen(){
-    delete this.project.tools
-    delete this.project.photo
-    delete this.project.type
     this.project.id = this.project.getUrl()
     this.projectService.storeScreen(this.projectId, { ...this.project })
-    this.project = new Project('', '')
+    this.project = new ProjectScreen()
     this.router.navigate(['detail', this.projectId])
   }
 
@@ -70,7 +69,6 @@ export class ProjectFormComponent implements OnInit {
         .then(url => {    
           if(this.projectId){
             this.project.photos.push(url)
-            console.log(this.project)
           }else{
             this.photo = url
           }
